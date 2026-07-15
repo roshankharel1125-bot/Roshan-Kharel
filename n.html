@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      .site-header {
+        height: 20vh;
+        background-color: #1b943a;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .site-header h1 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      .content {
+        width: 80%;
+        margin: 30px auto;
+        display: flex;
+        justify-content: center;
+      }
+
+      .site-footer {
+        height: 60px;
+        background-color: #5f2c35;
+        color: #ffffff;
+        text-align: center;
+        padding: 15px 0;
+      }
+
+      /* ---- Profile card ---- */
+      .card {
+        width: 300px;
+        height: 380px; /* fixed height so overflow shows inside, not below the card */
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+
+      .profile {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin-bottom: 16px;
+      }
+
+      .profile img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .profile .status {
+        position: absolute;
+        top: 4px;
+        right: 4px;
+        width: 16px;
+        height: 16px;
+        background: #2ecc71;
+        border: 2px solid #ffffff;
+        border-radius: 50%;
+      }
+
+      .card h2 {
+        margin: 0 0 4px;
+        font-size: 20px;
+        font-weight: 700;
+        color: #1a2233;
+      }
+
+      .card h4 {
+        margin: 0 0 16px;
+        font-size: 14px;
+        font-weight: normal;
+        color: #6b7280;
+      }
+
+      .card .bio {
+        flex: 1;
+        width: 100%;
+        overflow-y: auto;
+        font-size: 14px;
+        line-height: 1.6;
+        color: #374151;
+        padding-right: 6px;
+      }
+
+      .card .bio::-webkit-scrollbar {
+        width: 6px;
+      }
+      .card .bio::-webkit-scrollbar-thumb {
+        background: #c7cdd6;
+        border-radius: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <h1>Roshan Kharel</h1>
+    </header>
+
+    <main class="content">
+      <section>
+        <div class="card">
+          <div class="profile">
+            <img src="https://via.placeholder.com/100" alt="Profile" />
+            <span class="status"></span>
+          </div>
+
+          <h2>Jane Doe</h2>
+          <h4>Frontend Developer</h4>
+
+          <div class="bio">
+            Property. This text is intentionally long so the bio box overflows
+            and you can see the scrollbar appear inside the box instead of
+            pushing the card taller.
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Hello World</p>
+    </footer>
+  </body>
+</html>
