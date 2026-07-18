@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimalist Tech Shop</title>
+    <style>
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* --- Navbar --- */
+        header {
+            background-color: #ffffff;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2b6cb0;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #4a5568;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #2b6cb0;
+        }
+
+        /* --- Hero Section (Animated Intro) --- */
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #e2e8f0 0%, #edf2f7 100%);
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+            animation: fadeInUp 1s ease forwards;
+            opacity: 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .cta-btn {
+            background-color: #2b6cb0;
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .cta-btn:hover {
+            background-color: #2c5282;
+            transform: scale(1.05);
+        }
+
+        /* --- Products Section --- */
+        .products-container {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* --- Product Card & Hover Animations --- */
+        .product-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px rgba(0,0,0,0.1);
+        }
+
+        .product-image-wrapper {
+            overflow: hidden;
+            position: relative;
+            background-color: #f7fafc;
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-image {
+            width: 80%;
+            height: auto;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+
+        /* Image zoom effect on card hover */
+        .product-card:hover .product-image {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2d3748;
+        }
+
+        .product-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #2b6cb0;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.7rem;
+            background-color: #4a5568;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background-color 0.2s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #2d3748;
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1a202c;
+            color: #a0aec0;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">ElectroShop</div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Products</a>
+            <a href="#">Cart (0)</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Next-Gen Gadgets</h1>
+        <p>Upgrade your setup with our premium, curated tech accessories.</p>
+        <a href="#shop" class="cta-btn">Shop Collection</a>
+    </section>
+
+    <main class="products-container" id="shop">
+        <h2 class="section-title">Featured Products</h2>
+        
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1545127398-14699f92334b?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Wireless Headphones" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Premium Headphones</h3>
+                    <p class="product-price">$249.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1617043983671-adaadcaa2460?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Smart Watch" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Minimalist Smartwatch</h3>
+                    <p class="product-price">$199.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1595044426077-d36d9236d54a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Mechanical Keyboard" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Mechanical Keyboard</h3>
+                    <p class="product-price">$129.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1585792180666-f7347c490ee2?q=80&w=1177&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Monitor" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Monitor</h3>
+                    <p class="product-price">$165.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1527814050087-3793815479db?q=80&w=1028&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Smart Watch" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Minimalist Mouse</h3>
+                    <p class="product-price">$115.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1719927604476-dc404b85358f?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Smart Watch" class="product-image">
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Minimalist Case</h3>
+                    <p class="product-price">$99.00</p>
+                    <button class="add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ElectroShop. Built with HTML & CSS.</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heritage Goods | Classic E-Commerce</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- CSS Variables for Maintainability --- */
+        :root {
+            --bg-color: #fdfbf7; /* Warm, classic off-white */
+            --text-main: #2c2c2c; /* Soft black for readability */
+            --text-muted: #5a5a5a;
+            --accent-color: #8b5e34; /* Leather/bronze accent */
+            --font-heading: 'Playfair Display', Georgia, serif;
+            --font-body: 'Lato', Helvetica, sans-serif;
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* --- Reset & Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            background-color: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            color: var(--accent-color);
+        }
+
+        nav a {
+            margin-left: 2rem;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 1rem;
+            /* Subtly animated background pattern or gradient */
+            background: linear-gradient(to bottom, rgba(253, 251, 247, 0.2), rgba(253, 251, 247, 1)), 
+                        url('https://images.unsplash.com/photo-1490367532201-b9bc1dc483f6?auto=format&fit=crop&w=1920&q=80') center/cover;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.3s forwards;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-family: var(--font-heading);
+            font-style: italic;
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.5s forwards;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background-color: var(--text-main);
+            color: var(--bg-color);
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            border: 1px solid var(--text-main);
+            transition: var(--transition-smooth);
+            opacity: 0;
+            animation: fadeUp 1s ease-out 0.7s forwards;
+        }
+
+        .btn:hover {
+            background-color: transparent;
+            color: var(--text-main);
+        }
+
+        /* --- Products Grid --- */
+        .shop-section {
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 5%;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--text-main);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+        }
+
+        /* --- Product Card & Animations --- */
+        .product-card {
+            background: transparent;
+            cursor: pointer;
+            group;
+        }
+
+        .product-image-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .product-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease; /* Smooth, slow zoom */
+        }
+
+        /* The hover animation trigger */
+        .product-card:hover .product-image-container img {
+            transform: scale(1.08);
+        }
+
+        .product-info {
+            text-align: center;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .product-card:hover .product-title {
+            color: var(--accent-color);
+        }
+
+        .product-price {
+            font-family: var(--font-body);
+            color: var(--text-muted);
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 3rem 1rem;
+            border-top: 1px solid rgba(0,0,0,0.1);
+            margin-top: 4rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* --- Keyframe Animations --- */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- Responsive Adjustments --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { display: none; /* In a real app, add a hamburger menu here */ }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#" class="logo">Heritage</a>
+        <nav>
+            <a href="#">Shop</a>
+            <a href="#">Journal</a>
+            <a href="#">About</a>
+            <a href="#">Cart (0)</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Timeless Craftsmanship</h1>
+                <p>Curated goods for the modern traditionalist.</p>
+                <a href="#shop" class="btn">Explore Collection</a>
+            </div>
+        </section>
+
+        <section id="shop" class="shop-section">
+            <div class="section-header">
+                <h2>New Arrivals</h2>
+            </div>
+            
+            <div class="product-grid">
+                <article class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&auto=format&fit=crop&q=80" alt="Classic Leather Bag">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">The Oxford Satchel</h3>
+                        <p class="product-price">$285.00</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?w=600&auto=format&fit=crop&q=80" alt="Mechanical Watch">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Chronograph Timepiece</h3>
+                        <p class="product-price">$450.00</p>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1605733513597-a8f8341084e6?w=600&auto=format&fit=crop&q=80" alt="Leather Boots">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Artisan Chelsea Boots</h3>
+                        <p class="product-price">$320.00</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Heritage Goods. Designed for timelessness.</p>
+    </footer>
+
+</body>
+</html>
